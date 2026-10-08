@@ -1315,7 +1315,7 @@ function invoiceSheetHTML(inv, forExport){
 
     ${payRows ? `<div class="inv-sec">الدفعات المستلمة</div>${payRows}` : ''}
 
-    <div class="inv-note">المبالغ بالدولار هي الأساس، وما يقابلها بالريال والليرة محسوب وفق سعر الصرف المعتمد${inv.fxNote ? ' (' + invEsc(inv.fxNote) + ')' : ''}. فاتورة إلكترونية صادرة عن ${invEsc(inv.company)}.</div>
+    <div class="inv-note">المبالغ بالدولار وما يقابلها بالريال السعودي والليرةالسورية محسوب وفق سعر الصرف المعتمد${inv.fxNote ? ' (' + invEsc(inv.fxNote) + ')' : ''}. فاتورة إلكترونية صادرة عن ${invEsc(inv.company)}.</div>
   </div>`;
 }
 function invoiceText(inv){
@@ -2213,7 +2213,7 @@ function buildFirstInvoice(a, appId, fees, pays){
   const remaining = Math.max(0, Math.round((total - paid) * 100) / 100);
   return {
     ...adminInvBase(a, appId),
-    title: 'فاتورة رسمية — الدفعة الأولى', subtitle: 'رسوم المستندات',
+    title: 'فاتورة رسمية', subtitle: 'رسوم المستندات',
     date: fmtDateAr(a.createdAt),
     lines: fees.items.map(i => ({ label: i.label, usd: Number(i.usd) || 0 }))
       .concat(fees.extras.map(e => ({ label: e.label, note: 'مستند إضافي', usd: Number(e.usd) || 0 }))),
